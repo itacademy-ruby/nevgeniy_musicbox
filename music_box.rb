@@ -14,18 +14,18 @@ class MusicBox
 
 	def turn_on
 		unless @turned_on
-		  @turned_on = true
-		  puts "Box was turned on" 
+			@turned_on = true
+			puts "Box was turned on" 
 		end
 	end
 
 	def turn_off
 		if @turned_on
-     	  puts "Box was turned on"
-      	  @turned_on = false
-   		 else
-          puts "Box was turned off"
-    	end
+			puts "Box was turned on"
+			@turned_on = false
+		else
+			puts "Box was turned off"
+		end
 	end
 
 	def pay income_money
@@ -40,8 +40,7 @@ class MusicBox
 			income_money = income_money.to_i + re_incom_money.to_i
 			if income_money.to_i >= 10
 				p 'На вашем счете ' + income_money.to_s + ' рублей. Вы можете заказать ' + (income_money.to_i / @song_cost.to_i).to_s + ' Песен! '
-			end
-			
+			end	
 		end
 
 		if income_money.to_i > 100
@@ -74,7 +73,6 @@ class MusicBox
 			p "Turned off"
 		end
 	end
-
 end
 
 
@@ -85,9 +83,7 @@ box = MusicBox.new 10
     p 'Стоимсоть одной песни 10 рублей'
     p 'Внесите средства, затем выберете песню'
     income_money = gets.chomp
-
   box.pay income_money
-
   box.list_song
   p 'Укажите номер песни'
   song_number = gets.chomp
