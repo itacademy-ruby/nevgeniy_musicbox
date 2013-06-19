@@ -81,27 +81,21 @@ module Turn_on
     end
   end
 
-  module Search
-    
-    def search song_number
-      @current_song = @song[song_number.to_i - 1]
-    end
-  end
-
-  module Load_song
-    
-    def load_song 
-      p 'Вы выбрали песню ' + (@song[@current_song.to_i]).to_s + ' '
-      p 'Загрузка...'
-    end
-  end
-
   module Play_music
     def play_music
       box.search song_number
       box.load_song
       puts 'Играет '+ (@song[@current_song.to_i]).to_s + ' !'
     end
+
+    private
+     def search song_number
+      @current_song = @song[song_number.to_i - 1]
+     end
+     def load_song 
+      p 'Вы выбрали песню ' + (@song[@current_song.to_i]).to_s + ' '
+      p 'Загрузка...'
+     end
   end
 
 
@@ -111,8 +105,6 @@ class MusicBox < Box
   include Turn_off
   include Income_money
   include List_song
-  include Search
-  include Load_song
   include Play_music
 
 end
@@ -122,8 +114,6 @@ class MusicBoxCD < MusicBox
   include Turn_off
   include Income_money
   include List_song
-  include Search
-  include Load_song
   include Play_music
 end
 
@@ -135,9 +125,7 @@ boxCD = MusicBoxCD.new 20
     p 'Стоимсоть одной песни 10 рублей'
     p 'Внесите средства, затем выберете песню'
     income_money = gets.chomp
-
   box.pay income_money
-
   box.list_song
   p 'Укажите номер песни'
   song_number = gets.chomp
